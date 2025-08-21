@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7f4xic2gllqx"]
+[gd_scene load_steps=5 format=3 uid="uid://b7f4xic2gllqx"]
 
 [ext_resource type="PackedScene" uid="uid://ddwy75v7sns62" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dohc77035w3kx" path="res://scenes/cctv1.tscn" id="2_yqjtg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
 
@@ -20,3 +21,7 @@ physics_material_override = SubResource("PhysicsMaterial_uwrxv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 37)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="Node2D" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(73, -29)
+scale = Vector2(0.1, 0.1)
