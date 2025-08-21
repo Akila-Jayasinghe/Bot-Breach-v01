@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Bot-Breach-v01"
+run/main_scene="uid://b7f4xic2gllqx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Bot-Breach-v01"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
