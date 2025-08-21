@@ -1,27 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7f4xic2gllqx"]
+[gd_scene load_steps=7 format=3 uid="uid://b7f4xic2gllqx"]
 
 [ext_resource type="PackedScene" uid="uid://ddwy75v7sns62" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://dohc77035w3kx" path="res://scenes/cctv1.tscn" id="2_yqjtg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+normal = Vector2(0, 1)
+distance = -63.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
+normal = Vector2(-1, 0)
+distance = -113.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+normal = Vector2(1, 0)
+distance = -114.0
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(72, -24)
 zoom = Vector2(5, 5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_uwrxv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 37)
+[node name="Bottom_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 63)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
-[node name="Node2D" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(73, -29)
-scale = Vector2(0.1, 0.1)
+[node name="Top_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="Right_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Left_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
