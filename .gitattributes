@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-text=auto
-.gd      text
-.tscn    text
-.tres    text
-.shader  text
-.cs      text
-=======
-# Normalize EOL for all files that Git considers text files.
-* text=auto eol=lf
->>>>>>> 26e3825 (chore: initial Godot project commit)
+* text=auto
+*.gd     text
+*.tscn   text
+*.tres   text
+*.shader text
+*.cs     text
