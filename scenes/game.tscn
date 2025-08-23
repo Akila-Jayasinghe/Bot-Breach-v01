@@ -31,6 +31,7 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(176, 79)
+collision_layer = 2
 waypoints_path = NodePath("../DronePath01")
 
 [node name="DronePath01" type="Node2D" parent="."]
@@ -55,6 +56,7 @@ position = Vector2(134, 110)
 
 [node name="Drone2" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(-117, -70)
+collision_layer = 2
 waypoints_path = NodePath("../DronePath02")
 
 [node name="DronePath02" type="Node2D" parent="."]

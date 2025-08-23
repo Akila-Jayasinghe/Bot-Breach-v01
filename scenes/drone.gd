@@ -15,8 +15,9 @@ var target_player: Node2D = null
 var last_seen_position: Vector2
 
 # --- State Machine ---
-enum State { PATROL, CHASE, SUSPICIOUS }
+enum State { PATROL, CHASE, SUSPICIOUS, STUNNED }
 var current_state: State = State.PATROL
+var player_last_position: Vector2 # Track player movement during stun
 
 # --- Node References ---
 @onready var vision_area: Area2D = $Vision
@@ -40,8 +41,21 @@ func _ready():
 	# Connect vision signals
 	vision_area.body_entered.connect(_on_vision_body_entered)
 	vision_area.body_exited.connect(_on_vision_body_exited)
+	
+	# Connect bump detection signal
+	$BumpDetector.body_entered.connect(_on_bump_detector_body_entered)
 
 func _physics_process(delta):
+	# Check if player moves while we're stunned (to resume chase)
+	if current_state == State.STUNNED && target_player:
+		# Check if player has moved from their last recorded position
+		if target_player.global_position.distance_to(player_last_position) > 2.0:
+			print("Player moved! Resuming chase from stun.")
+			current_state = State.CHASE
+		
+		# Keep facing the player while stunned
+		vision_cone.rotation = (target_player.global_position - global_position).angle()
+	
 	# Choose behavior based on state
 	match current_state:
 		State.PATROL:
@@ -50,8 +64,12 @@ func _physics_process(delta):
 			chase(delta)
 		State.SUSPICIOUS:
 			suspicious(delta)
+		State.STUNNED:
+			# Do nothing - just stay stunned until player moves
+			pass
 	
 	move_and_slide()
+	
 	# Update the vision cone drawing every frame
 	queue_redraw()
 
@@ -63,6 +81,8 @@ func _draw():
 			color = Color(1, 0, 0, 0.3)  # RED when chasing
 		State.SUSPICIOUS:
 			color = Color(1, 0.8, 0, 0.3) # Yellow-orange when suspicious
+		State.STUNNED:
+			color = Color(1, 0, 0, 0.4)  # RED when stunned (same as chase but slightly more opaque)
 	
 	# Draw a FULL CIRCLE for the vision range
 	draw_circle(Vector2.ZERO, vision_range, color)
@@ -100,6 +120,14 @@ func suspicious(_delta):
 	if global_position.distance_to(last_seen_position) < 5.0:
 		velocity = Vector2.ZERO # Stop and look around
 
+func _on_bump_detector_body_entered(body):
+	if (current_state == State.CHASE || current_state == State.SUSPICIOUS) && body.is_in_group("player"):
+		print("Drone bumped into player! Permanently stunned until player moves.")
+		current_state = State.STUNNED
+		velocity = Vector2.ZERO
+		# Record the player's position at the moment of stun
+		player_last_position = target_player.global_position
+
 # --- VISION SIGNAL HANDLERS ---
 func _on_vision_body_entered(body):
 	# DEBUG: Print ANY body that enters the vision area
@@ -108,6 +136,9 @@ func _on_vision_body_entered(body):
 	if body.is_in_group("player"):
 		print("DRONE ALERT: Player entered vision!")
 		target_player = body
+		# Allow vision detection to work even when stunned
+		if current_state == State.STUNNED:
+			print("Drone recovered from stun! Resuming chase.")
 		current_state = State.CHASE
 		chase_timer.stop()
 	else:
@@ -115,9 +146,12 @@ func _on_vision_body_entered(body):
 
 func _on_vision_body_exited(body):
 	if body == target_player:
-		# Player left vision, start the 3-second cooldown timer
-		chase_timer.start()
-		current_state = State.SUSPICIOUS # Switch to suspicious state
+		# Only start timer if we're not stunned
+		if current_state != State.STUNNED:
+			chase_timer.start()
+			current_state = State.SUSPICIOUS # Switch to suspicious state
+		else:
+			print("Player escaped while drone was stunned.")
 
 func _on_chase_timer_timeout():
 	# This runs after 3 seconds if the player hasn't been re-spotted

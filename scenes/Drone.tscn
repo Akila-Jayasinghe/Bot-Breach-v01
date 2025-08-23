@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq8rtahq7mc5w"]
+[gd_scene load_steps=15 format=3 uid="uid://dq8rtahq7mc5w"]
 
 [ext_resource type="Texture2D" uid="uid://dnx4pg0scqvve" path="res://assets/sample_assets/sprites/slime_green.png" id="1_knnud"]
 [ext_resource type="Script" uid="uid://cok5i00ahcay0" path="res://scenes/drone.gd" id="1_x33g3"]
@@ -67,10 +67,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knnud"]
-size = Vector2(10, 13)
+size = Vector2(12, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x33g3"]
 radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x33g3"]
+size = Vector2(16, 15)
 
 [node name="Drone" type="CharacterBody2D"]
 collision_mask = 2
@@ -83,7 +86,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_knnud")
 
 [node name="Vision" type="Area2D" parent="."]
@@ -95,3 +98,9 @@ shape = SubResource("CircleShape2D_x33g3")
 [node name="VisionConeVisual" type="Node2D" parent="."]
 
 [node name="ChaseTimer" type="Timer" parent="."]
+
+[node name="BumpDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BumpDetector"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_x33g3")
