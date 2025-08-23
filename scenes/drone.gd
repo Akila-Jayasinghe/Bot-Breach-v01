@@ -1,52 +1,126 @@
 extends CharacterBody2D
 
-# How fast the drone moves normally
-@export var patrol_speed: float = 60.0
-# Drag the Waypoints node here in the Inspector!
+# --- Patrol Settings ---
+@export var patrol_speed: float = 45.0
 @export var waypoints_path: NodePath
-
-# List to store the positions of our waypoints
 var waypoints: Array[Vector2] = []
-# Keeps track of which waypoint we're going towards
 var current_waypoint_index: int = 0
 
+# --- Chase & Vision Settings ---
+@export var chase_speed: float = 50.0
+@export var vision_range: float = 50.0
+@export var vision_angle: float = 90.0 # Field of view in degrees
+@export var chase_time_after_lost: float = 3.0 # 3 second chase cooldown
+var target_player: Node2D = null
+var last_seen_position: Vector2
+
+# --- State Machine ---
+enum State { PATROL, CHASE, SUSPICIOUS }
+var current_state: State = State.PATROL
+
+# --- Node References ---
+@onready var vision_area: Area2D = $Vision
+@onready var vision_cone: Node2D = $VisionConeVisual
+@onready var chase_timer: Timer = $ChaseTimer
+
+# --- Timer Setup ---
 func _ready():
-	# This function runs when the drone is added to the game
-	# 1. Get the waypoint container node we linked in the Inspector
+	# Load waypoints
 	var waypoint_container = get_node(waypoints_path)
-	
-	# 2. Loop through all children of the container and save their positions
 	for child in waypoint_container.get_children():
 		waypoints.append(child.global_position)
-	
-	# Start the drone at the first waypoint (optional)
 	if waypoints.size() > 0:
 		global_position = waypoints[0]
+	
+	# Configure Timer
+	chase_timer.wait_time = chase_time_after_lost
+	chase_timer.one_shot = true
+	chase_timer.timeout.connect(_on_chase_timer_timeout)
+	
+	# Connect vision signals
+	vision_area.body_entered.connect(_on_vision_body_entered)
+	vision_area.body_exited.connect(_on_vision_body_exited)
 
 func _physics_process(delta):
-	# This function runs every physics frame (60 times per second)
+	# Choose behavior based on state
+	match current_state:
+		State.PATROL:
+			patrol(delta)
+		State.CHASE:
+			chase(delta)
+		State.SUSPICIOUS:
+			suspicious(delta)
 	
-	# If there are no waypoints, just stop and do nothing.
+	move_and_slide()
+	# Update the vision cone drawing every frame
+	queue_redraw()
+
+func _draw():
+	# Choose a color based on the drone's state
+	var color = Color(1, 1, 1, 0.2)  # WHITE, transparent (for PATROL state)
+	match current_state:
+		State.CHASE:
+			color = Color(1, 0, 0, 0.3)  # RED when chasing
+		State.SUSPICIOUS:
+			color = Color(1, 0.8, 0, 0.3) # Yellow-orange when suspicious
+	
+	# Draw a FULL CIRCLE for the vision range
+	draw_circle(Vector2.ZERO, vision_range, color)
+
+func patrol(_delta):
 	if waypoints.is_empty():
 		return
 	
-	# 1. Figure out which waypoint we're targeting
 	var target_waypoint: Vector2 = waypoints[current_waypoint_index]
-	
-	# 2. Calculate the direction to move in
-	#    (Target Position - Our Current Position) -> then normalize it to a length of 1
 	var direction: Vector2 = (target_waypoint - global_position).normalized()
-	
-	# 3. Set our velocity (direction * speed)
 	velocity = direction * patrol_speed
 	
-	# 4. Move the drone! This function handles the collision and movement.
-	move_and_slide()
+	# Rotate the vision cone to face the movement direction
+	if velocity.length() > 0:
+		vision_cone.rotation = velocity.angle()
 	
-	# 5. Check if we are very close to the target waypoint
 	if global_position.distance_to(target_waypoint) < 5.0:
-		# If yes, move to the next waypoint in the list.
-		current_waypoint_index += 1
-		# If we were at the last waypoint, loop back to the first one (index 0).
-		if current_waypoint_index >= waypoints.size():
-			current_waypoint_index = 0
+		current_waypoint_index = (current_waypoint_index + 1) % waypoints.size()
+
+func chase(_delta):
+	if target_player:
+		var direction: Vector2 = (target_player.global_position - global_position).normalized()
+		velocity = direction * chase_speed
+		last_seen_position = target_player.global_position
+		# Keep the vision cone facing the player we're chasing
+		vision_cone.rotation = direction.angle()
+
+func suspicious(_delta):
+	# Move towards the last place we saw the player
+	var direction: Vector2 = (last_seen_position - global_position).normalized()
+	velocity = direction * patrol_speed # Use patrol speed for searching
+	vision_cone.rotation = direction.angle()
+	
+	# Check if we've reached the last seen position
+	if global_position.distance_to(last_seen_position) < 5.0:
+		velocity = Vector2.ZERO # Stop and look around
+
+# --- VISION SIGNAL HANDLERS ---
+func _on_vision_body_entered(body):
+	# DEBUG: Print ANY body that enters the vision area
+	print("Vision detected something: ", body.name)
+	
+	if body.is_in_group("player"):
+		print("DRONE ALERT: Player entered vision!")
+		target_player = body
+		current_state = State.CHASE
+		chase_timer.stop()
+	else:
+		print("It was not the player. It was in groups: ", body.get_groups())
+
+func _on_vision_body_exited(body):
+	if body == target_player:
+		# Player left vision, start the 3-second cooldown timer
+		chase_timer.start()
+		current_state = State.SUSPICIOUS # Switch to suspicious state
+
+func _on_chase_timer_timeout():
+	# This runs after 3 seconds if the player hasn't been re-spotted
+	print("Drone gave up the chase.")
+	target_player = null
+	current_state = State.PATROL # Return to patrol
