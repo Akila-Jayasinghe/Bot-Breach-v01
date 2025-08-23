@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b46wdwe4124mr"]
+
+[ext_resource type="Script" uid="uid://dvv8noebbxte8" path="res://scripts/node_2d.gd" id="1_04qyp"]
+[ext_resource type="Texture2D" uid="uid://b82epjfwfoo6g" path="res://assets/sample_assets/sprites/camera/camera.png" id="2_j7wrs"]
+[ext_resource type="Texture2D" uid="uid://bu6t8mrgv5vou" path="res://assets/sample_assets/sprites/camera/camera_stand.png" id="3_fws66"]
+[ext_resource type="Texture2D" uid="uid://dceka485u6etq" path="res://assets/sample_assets/sprites/detection.png" id="4_hh0fu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dubn7"]
+atlas = ExtResource("2_j7wrs")
+region = Rect2(0, 0, 88, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08kqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dubn7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="node_2d" type="Node2D"]
+script = ExtResource("1_04qyp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.291656, 0.0767002)
+scale = Vector2(0.105114, 0.105114)
+sprite_frames = SubResource("SpriteFrames_08kqv")
+
+[node name="CameraStand" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(5, -39)
+texture = ExtResource("3_fws66")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6.33334, 51)
+scale = Vector2(0.186667, 0.186667)
+texture = ExtResource("4_hh0fu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(1.7, 30)
+polygon = PackedVector2Array(-2, -27, -28, 36, 29.3, 36)

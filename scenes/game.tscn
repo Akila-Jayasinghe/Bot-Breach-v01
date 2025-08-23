@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7f4xic2gllqx"]
+
+[ext_resource type="PackedScene" uid="uid://ddwy75v7sns62" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dq8rtahq7mc5w" path="res://scenes/Drone.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://b46wdwe4124mr" path="res://scenes/node_2d.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://5cr5erqeyeqp" path="res://assets/sample_assets/sprites/tile.png" id="4_lbhrr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+normal = Vector2(0, 1)
+distance = -63.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
+normal = Vector2(-1, 0)
+distance = -113.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+normal = Vector2(1, 0)
+distance = -114.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-58, 25)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_uwrxv")
+
+[node name="Bottom_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 63)
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="Top_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="Right_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Left_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
+
+[node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(21, -27)
+
+[node name="Drone2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(40, 14)
+
+[node name="Drone3" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-40, -44)
+
+[node name="CCTV" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(0, -56)
+
+[node name="Tile" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1.14441e-05, 4.76837e-06)
+scale = Vector2(1.59441, 2.86957)
+texture = ExtResource("4_lbhrr")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Tile"]
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+blend_mode = 1

@@ -1,0 +1,17 @@
+# Godot cache & import files
+.godot/
+.import/
+
+# Exported builds
+/export/
+/build/
+
+# IDE/editor settings
+.vscode/
+.idea/
+.vs/
+.mono/
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
