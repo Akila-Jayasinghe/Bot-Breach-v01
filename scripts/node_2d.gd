@@ -4,7 +4,7 @@ extends Node2D
 @export var rotation_range : float = 180.0 # total rotation range
 @export var detection_color : Color = Color(1, 0, 0) # red
 @export var normal_color : Color = Color(1, 1, 1) # white
-@export var cooldown_time : float = 3.0
+@export var cooldown_time : float = 0.5
 @export var tracking_speed : float = 2.0  # speed to rotate toward player
 
 var direction = 1

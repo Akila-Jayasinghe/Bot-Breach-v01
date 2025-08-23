@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq8rtahq7mc5w"]
+[gd_scene load_steps=13 format=3 uid="uid://dq8rtahq7mc5w"]
 
 [ext_resource type="Texture2D" uid="uid://dnx4pg0scqvve" path="res://assets/sample_assets/sprites/slime_green.png" id="1_knnud"]
+[ext_resource type="Script" uid="uid://cok5i00ahcay0" path="res://scenes/drone.gd" id="1_x33g3"]
 [ext_resource type="Texture2D" uid="uid://fms05q7cvyxi" path="res://assets/sample_assets/sprites/slime_purple.png" id="2_1r4ts"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
@@ -69,6 +70,7 @@ animations = [{
 size = Vector2(14, 13)
 
 [node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_x33g3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 1)

@@ -19,49 +19,62 @@ distance = -113.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 normal = Vector2(1, 0)
-distance = -114.0
+distance = -229.0
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-58, 25)
+position = Vector2(-133, 82)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(134, 73)
+waypoints_path = NodePath("../DronePath01")
+
+[node name="DronePath01" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath01"]
+position = Vector2(144, 19)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath01"]
+position = Vector2(139, -54)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath01"]
+position = Vector2(45, -28)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath01"]
+position = Vector2(-31, 26)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath01"]
+position = Vector2(43, 94)
+
+[node name="CCTV" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(-36, -103)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_uwrxv")
 
 [node name="Bottom_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 63)
+position = Vector2(0, 128)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="Top_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -65)
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
 
 [node name="Right_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1, 0)
+position = Vector2(116, 0)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="Left_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
-[node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(21, -27)
-
-[node name="Drone2" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(40, 14)
-
-[node name="Drone3" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-40, -44)
-
-[node name="CCTV" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(0, -56)
-
 [node name="Tile" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(1.14441e-05, 4.76837e-06)
-scale = Vector2(1.59441, 2.86957)
+position = Vector2(0.499832, 0.499931)
+scale = Vector2(3.32168, 5.93478)
 texture = ExtResource("4_lbhrr")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Tile"]
