@@ -8,18 +8,19 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+distance = -194.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 normal = Vector2(0, 1)
-distance = -63.0
+distance = -255.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
-distance = -113.0
+distance = -456.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 normal = Vector2(1, 0)
-distance = -229.0
+distance = -571.0
 
 [node name="Game" type="Node2D"]
 
@@ -27,7 +28,6 @@ distance = -229.0
 position = Vector2(-133, 82)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
 
 [node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(176, 79)
@@ -106,8 +106,8 @@ shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
 [node name="Tile" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(0.499832, 0.499931)
-scale = Vector2(3.32168, 5.93478)
+position = Vector2(-0.21344, 0.750031)
+scale = Vector2(8.28271, 14.75)
 texture = ExtResource("4_lbhrr")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Tile"]
