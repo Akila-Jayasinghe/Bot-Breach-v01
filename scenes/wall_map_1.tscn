@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctbhpw3hsqxt5"]
+
+[ext_resource type="Texture2D" uid="uid://dbg8xsy3rlooi" path="res://assets/Assests basic/tiles and carpets/Wall 2.png" id="1_2sv7f"]
+
+[node name="WallMap" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_2sv7f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-432, -207, -410, -208, -409, -386, -313, -388, -314, -483, -238, -483, -239, -388, -216, -390, -217, -484, -143, -482, -143, -387, -49, -388, -49, -424, -54, -432, -121, -432, -121, -481, 119, -481, 122, -432, 55, -432, 49, -420, 48, -389, 143, -390, 145, -481, 215, -482, 217, -390, 239, -392, 240, -483, 312, -484, 312, -391, 407, -390, 409, -204, 432, -205, 430, -426, 421, -428, 336, -432, 333, -524, -332, -525, -335, -431, -429, -428)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-421, -142, -431, -136, -431, -44, -528, -46, -528, -2, -430, -1, -432, 144, -526, 145, -526, 187, -336, 185, -336, 146, -408, 145, -406, 90, -337, 90, -337, 47, -408, 47, -410, -1, -338, 0, -337, -50, -407, -49, -407, -137)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(410, -137, 421, -148, 430, -139, 429, -51, 529, -50, 531, -2, 432, 3, 433, 144, 527, 143, 530, 189, 338, 189, 334, 143, 406, 144, 409, 88, 338, 87, 334, 50, 407, 48, 407, -5, 336, -6, 335, -48, 411, -48)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-431, 237, -413, 237, -408, 334, -320, 337, -316, 345, -313, 432, -239, 430, -238, 347, -231, 335, -219, 344, -217, 432, -141, 431, -142, 243, -50, 240, -49, 281, -121, 281, -119, 335, -53, 339, -49, 346, -48, 376, -120, 378, -116, 431, 120, 432, 120, 377, 50, 377, 47, 345, 62, 336, 121, 337, 116, 282, 48, 281, 48, 243, 142, 244, 144, 429, 218, 430, 218, 344, 228, 336, 236, 342, 240, 431, 311, 432, 314, 341, 409, 336, 410, 238, 428, 237, 431, 377, 335, 379, 334, 474, -336, 474, -338, 379, -434, 379)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-144, -337, -118, -333, -50, -338, -48, -288, -147, -287)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(46, -334, 122, -335, 142, -337, 143, -294, 47, -290)

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dnx4pg0scqvve" path="res://assets/sample_assets/sprites/slime_green.png" id="1_knnud"]
 [ext_resource type="Script" uid="uid://cok5i00ahcay0" path="res://scenes/drone.gd" id="1_x33g3"]
 [ext_resource type="Texture2D" uid="uid://fms05q7cvyxi" path="res://assets/sample_assets/sprites/slime_purple.png" id="2_1r4ts"]
+[ext_resource type="Texture2D" uid="uid://bn5nlmckh7wma" path="res://assets/Assests basic/enemy bot frame 1.png" id="4_rledj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
 atlas = ExtResource("1_knnud")
@@ -24,13 +25,9 @@ region = Rect2(72, 54, 24, 18)
 atlas = ExtResource("1_knnud")
 region = Rect2(48, 54, 24, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_746d6"]
-atlas = ExtResource("1_knnud")
-region = Rect2(72, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4p7cs"]
-atlas = ExtResource("2_1r4ts")
-region = Rect2(72, 54, 24, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fqrr"]
+atlas = ExtResource("4_rledj")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hxsdg"]
 animations = [{
@@ -56,48 +53,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_746d6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4p7cs")
+"texture": SubResource("AtlasTexture_3fqrr")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_knnud"]
-size = Vector2(28, 36)
+[sub_resource type="CircleShape2D" id="CircleShape2D_rledj"]
+radius = 29.5042
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x33g3"]
-radius = 135.0
+radius = 90.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x33g3"]
-size = Vector2(43, 41.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fqrr"]
+radius = 45.5556
 
 [node name="Drone" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_x33g3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4.76837e-07)
-scale = Vector2(2.77778, 2.77778)
+scale = Vector2(1.59375, 1.59375)
 sprite_frames = SubResource("SpriteFrames_hxsdg")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 7)
-shape = SubResource("RectangleShape2D_knnud")
+position = Vector2(-1.5, 6.5)
+shape = SubResource("CircleShape2D_rledj")
 
 [node name="Vision" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 position = Vector2(-1, 7)
 shape = SubResource("CircleShape2D_x33g3")
 
 [node name="VisionConeVisual" type="Node2D" parent="."]
+visibility_layer = 5
 
 [node name="ChaseTimer" type="Timer" parent="."]
 
@@ -105,4 +101,4 @@ shape = SubResource("CircleShape2D_x33g3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BumpDetector"]
 position = Vector2(0.5, 6.75)
-shape = SubResource("RectangleShape2D_x33g3")
+shape = SubResource("CircleShape2D_3fqrr")

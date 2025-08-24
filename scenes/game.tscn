@@ -1,8 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7f4xic2gllqx"]
+[gd_scene load_steps=12 format=3 uid="uid://b7f4xic2gllqx"]
 
 [ext_resource type="PackedScene" uid="uid://ddwy75v7sns62" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dq8rtahq7mc5w" path="res://scenes/Drone.tscn" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://5cr5erqeyeqp" path="res://assets/sample_assets/sprites/tile.png" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://ctbhpw3hsqxt5" path="res://scenes/wall_map_1.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://d1if7fjmsw6fa" path="res://assets/Assests basic/tiles and carpets/tile 01.png" id="5_p57ef"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
+texture = ExtResource("5_p57ef")
+texture_region_size = Vector2i(97, 97)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_iywne"]
+tile_size = Vector2i(97, 97)
+sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
 
@@ -11,222 +23,233 @@ distance = -411.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 normal = Vector2(0, 1)
-distance = -475.0
+distance = -596.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
-distance = -843.0
+distance = -1189.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 normal = Vector2(1, 0)
 distance = -957.0
 
 [node name="Game" type="Node2D"]
+position = Vector2(965, 542)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_iywne")
+format = 2
+layer_0/tile_data = PackedInt32Array(-327691, 65536, 0, -327690, 65536, 0, -327689, 65536, 0, -327688, 65536, 0, -327687, 65536, 0, -327686, 65536, 0, -327685, 65536, 0, -327684, 65536, 0, -327683, 65536, 0, -327682, 65536, 0, -327681, 65536, 0, -393216, 65536, 0, -393215, 65536, 0, -393214, 65536, 0, -393213, 65536, 0, -393212, 65536, 0, -393211, 65536, 0, -393210, 65536, 0, -393209, 65536, 0, -393208, 65536, 0, -393207, 65536, 0, -393206, 65536, 0, -327670, 65536, 0, -262134, 65536, 0, -196598, 65536, 0, -131062, 65536, 0, -65526, 65536, 0, 10, 65536, 0, 65546, 65536, 0, 131082, 65536, 0, 196618, 65536, 0, 262154, 65536, 0, 327690, 65536, 0, 393226, 65536, 0, 393225, 65536, 0, 393224, 65536, 0, 393223, 65536, 0, 393222, 65536, 0, 393221, 65536, 0, 393220, 65536, 0, 393219, 65536, 0, 393218, 65536, 0, 393217, 65536, 0, 393216, 65536, 0, 458751, 65536, 0, 458750, 65536, 0, 458749, 65536, 0, 458748, 65536, 0, 458747, 65536, 0, 458746, 65536, 0, 458745, 65536, 0, 458744, 65536, 0, 458743, 65536, 0, 458742, 65536, 0, 458741, 65536, 0, 393205, 65536, 0, 327669, 65536, 0, 262133, 65536, 0, 196597, 65536, 0, 131061, 65536, 0, 65525, 65536, 0, -11, 65536, 0, -65547, 65536, 0, -131083, 65536, 0, -196619, 65536, 0, -262155, 65536, 0, -262154, 65536, 0, -262153, 65536, 0, -262152, 65536, 0, -262151, 65536, 0, -262150, 65536, 0, -262149, 65536, 0, -262148, 65536, 0, -262147, 65536, 0, -262146, 65536, 0, -262145, 65536, 0, -327680, 65536, 0, -327679, 65536, 0, -327678, 65536, 0, -327677, 65536, 0, -327676, 65536, 0, -327675, 65536, 0, -327674, 65536, 0, -327673, 65536, 0, -327672, 65536, 0, -327671, 65536, 0, -262135, 65536, 0, -196599, 65536, 0, -131063, 65536, 0, -65527, 65536, 0, 9, 65536, 0, 65545, 65536, 0, 131081, 65536, 0, 327689, 65536, 0, 262153, 65536, 0, 196617, 65536, 0, 327688, 65536, 0, 327687, 65536, 0, 327686, 65536, 0, 327685, 65536, 0, 327684, 65536, 0, 327683, 65536, 0, 327682, 65536, 0, 327681, 65536, 0, 327680, 65536, 0, 393215, 65536, 0, 393214, 65536, 0, 393213, 65536, 0, 393212, 65536, 0, 393211, 65536, 0, 393210, 65536, 0, 393209, 65536, 0, 393208, 65536, 0, 393207, 65536, 0, 393206, 65536, 0, 327670, 65536, 0, 262134, 65536, 0, 196598, 65536, 0, 131062, 65536, 0, 65526, 65536, 0, -10, 65536, 0, -65546, 65536, 0, -131082, 65536, 0, -196618, 65536, 0, -196617, 65536, 0, -196616, 65536, 0, -196615, 65536, 0, -196614, 65536, 0, -196613, 65536, 0, -196612, 65536, 0, -196611, 65536, 0, -196610, 65536, 0, -196609, 65536, 0, -262144, 65536, 0, -262143, 65536, 0, -262142, 65536, 0, -262141, 65536, 0, -262140, 65536, 0, -262139, 65536, 0, -262138, 65536, 0, -262137, 65536, 0, -262136, 65536, 0, -196600, 65536, 0, -131064, 65536, 0, -65528, 65536, 0, 8, 65536, 0, 65544, 65536, 0, 131080, 65536, 0, 196616, 65536, 0, 262152, 65536, 0, 262151, 65536, 0, 262150, 65536, 0, 262149, 65536, 0, 262148, 65536, 0, 262147, 65536, 0, 262146, 65536, 0, 262145, 65536, 0, 262144, 65536, 0, 327679, 65536, 0, 327678, 65536, 0, 327677, 65536, 0, 327676, 65536, 0, 327675, 65536, 0, 327674, 65536, 0, 327673, 65536, 0, 262137, 65536, 0, 262136, 65536, 0, 262135, 65536, 0, 327671, 65536, 0, 327672, 65536, 0, 196599, 65536, 0, 131063, 65536, 0, 65527, 65536, 0, -9, 65536, 0, -65545, 65536, 0, -131081, 65536, 0, -131080, 65536, 0, -131079, 65536, 0, -131078, 65536, 0, -131077, 65536, 0, -131073, 65536, 0, -196608, 65536, 0, -196607, 65536, 0, -196606, 65536, 0, -196605, 65536, 0, -196604, 65536, 0, -196603, 65536, 0, -196602, 65536, 0, -196601, 65536, 0, -131065, 65536, 0, -65529, 65536, 0, 7, 65536, 0, 131079, 65536, 0, 196615, 65536, 0, 196614, 65536, 0, 196613, 65536, 0, 196612, 65536, 0, 196611, 65536, 0, 196610, 65536, 0, 196609, 65536, 0, 196608, 65536, 0, 262143, 65536, 0, 262142, 65536, 0, 262141, 65536, 0, 262140, 65536, 0, 262139, 65536, 0, 262138, 65536, 0, 196601, 65536, 0, 196600, 65536, 0, 131064, 65536, 0, 65528, 65536, 0, -8, 65536, 0, -65544, 65536, 0, -65543, 65536, 0, -65542, 65536, 0, -65541, 65536, 0, -65540, 65536, 0, -131076, 65536, 0, -131075, 65536, 0, -131074, 65536, 0, -65538, 65536, 0, -65539, 65536, 0, -65537, 65536, 0, -131072, 65536, 0, -131071, 65536, 0, -131070, 65536, 0, -131069, 65536, 0, -131068, 65536, 0, -131067, 65536, 0, -131066, 65536, 0, -65530, 65536, 0, 6, 65536, 0, 65543, 65536, 0, 65542, 65536, 0, 131078, 65536, 0, 131077, 65536, 0, 131076, 65536, 0, 131075, 65536, 0, 131074, 65536, 0, 131073, 65536, 0, 131072, 65536, 0, 196607, 65536, 0, 196606, 65536, 0, 196605, 65536, 0, 196604, 65536, 0, 196603, 65536, 0, 196602, 65536, 0, 131065, 65536, 0, 65529, 65536, 0, -7, 65536, 0, -6, 65536, 0, -5, 65536, 0, -4, 65536, 0, -65534, 65536, 0, -65533, 65536, 0, -65532, 65536, 0, -65531, 65536, 0, -65535, 65536, 0, -65536, 65536, 0, -1, 65536, 0, -2, 65536, 0, -3, 65536, 0, 65531, 65536, 0, 65530, 65536, 0, 131066, 65536, 0, 65532, 65536, 0, 65533, 65536, 0, 65534, 65536, 0, 65535, 65536, 0, 0, 65536, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 65541, 65536, 0, 65540, 65536, 0, 65539, 65536, 0, 65538, 65536, 0, 65537, 65536, 0, 65536, 65536, 0, 131071, 65536, 0, 131070, 65536, 0, 131069, 65536, 0, 131068, 65536, 0, 131067, 65536, 0)
+
+[node name="WallMap" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(-502, -2)
+
+[node name="WallMap2" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(470, 60)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-798, 370)
+position = Vector2(-888, -151)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -1)
 
-[node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(743, 328)
+[node name="Drone" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-173, -71)
 collision_layer = 2
 waypoints_path = NodePath("../DronePath01")
 
-[node name="DronePath01" type="Node2D" parent="."]
+[node name="DronePath01" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath01"]
-position = Vector2(745, 298)
+position = Vector2(-220, -177)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath01"]
-position = Vector2(647, 303)
+position = Vector2(-296, -47)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath01"]
-position = Vector2(737, 182)
+position = Vector2(-324, -128)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath01"]
-position = Vector2(681, 141)
+position = Vector2(-341, -231)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath01"]
-position = Vector2(644, 187)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath01"]
-position = Vector2(701, 359)
-
-[node name="Drone2" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-808, -439)
-collision_layer = 2
+[node name="Drone2" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-739, -193)
 waypoints_path = NodePath("../DronePath02")
 
-[node name="DronePath02" type="Node2D" parent="."]
+[node name="DronePath02" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath02"]
-position = Vector2(-779, -400)
+position = Vector2(-799, 63)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath02"]
-position = Vector2(-708, -289)
+position = Vector2(-796, -244)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath02"]
-position = Vector2(-613, -283)
+position = Vector2(-769, -33)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath02"]
-position = Vector2(-852, -232)
+position = Vector2(-738, -117)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath02"]
-position = Vector2(-560, -356)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath02"]
-position = Vector2(-643, -432)
-
-[node name="Drone3" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(350, -133)
+[node name="Drone3" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-440, 36)
 waypoints_path = NodePath("../DronePath03")
 
-[node name="DronePath03" type="Node2D" parent="."]
+[node name="DronePath03" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath03"]
-position = Vector2(-614, 204)
+position = Vector2(-565, 177)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath03"]
-position = Vector2(-703, 304)
+position = Vector2(-510, -4)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath03"]
-position = Vector2(-767, 113)
+position = Vector2(-443, 211)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath03"]
-position = Vector2(-519, 61)
+position = Vector2(-583, -84)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath03"]
-position = Vector2(-467, 246)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath03"]
-position = Vector2(-546, 378)
-
-[node name="Drone4" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-288, -43)
+[node name="Drone4" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(-764, 252)
 waypoints_path = NodePath("../DronePath04")
 
-[node name="DronePath04" type="Node2D" parent="."]
+[node name="DronePath04" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath04"]
-position = Vector2(-294, -147)
+position = Vector2(-869, 288)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath04"]
-position = Vector2(-363, -93)
+position = Vector2(-723, 191)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath04"]
-position = Vector2(-359, 1)
+position = Vector2(-750, 376)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath04"]
-position = Vector2(-290, 52)
+position = Vector2(-807, 165)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath04"]
-position = Vector2(-235, 3)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath04"]
-position = Vector2(-229, -93)
-
-[node name="Drone5" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(239, -419)
+[node name="Drone5" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(260, 45)
 waypoints_path = NodePath("../DronePath05")
 
-[node name="DronePath05" type="Node2D" parent="."]
+[node name="DronePath05" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath05"]
-position = Vector2(165, -352)
+position = Vector2(135, -131)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath05"]
-position = Vector2(-69, -415)
+position = Vector2(227, 159)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath05"]
-position = Vector2(98, -258)
+position = Vector2(246, 18)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath05"]
-position = Vector2(-50, -287)
+position = Vector2(137, -12)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath05"]
-position = Vector2(-238, -454)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath05"]
-position = Vector2(88, -495)
-
-[node name="Drone6" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(151, 274)
+[node name="Drone6" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(677, -209)
 waypoints_path = NodePath("../DronePath06")
 
-[node name="DronePath06" type="Node2D" parent="."]
+[node name="DronePath06" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath06"]
-position = Vector2(108, 207)
+position = Vector2(179, 385)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath06"]
-position = Vector2(39, 261)
+position = Vector2(197, 262)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath06"]
-position = Vector2(43, 355)
+position = Vector2(82, 364)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath06"]
-position = Vector2(112, 406)
+position = Vector2(293, 306)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath06"]
-position = Vector2(167, 357)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath06"]
-position = Vector2(173, 261)
-
-[node name="Drone7" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(750, -339)
+[node name="Drone7" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(526, 199)
 waypoints_path = NodePath("../DronePath07")
 
-[node name="DronePath07" type="Node2D" parent="."]
+[node name="DronePath07" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath07"]
-position = Vector2(408, -147)
+position = Vector2(480, 197)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath07"]
-position = Vector2(339, -93)
+position = Vector2(395, 173)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath07"]
-position = Vector2(343, 1)
+position = Vector2(537, 323)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath07"]
-position = Vector2(412, 52)
+position = Vector2(493, 80)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath07"]
-position = Vector2(467, 3)
-
-[node name="Marker2D6" type="Marker2D" parent="DronePath07"]
-position = Vector2(473, -93)
-
-[node name="Drone8" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-711, 157)
+[node name="Drone8" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(227, 298)
 waypoints_path = NodePath("../DronePath08")
 
-[node name="DronePath08" type="Node2D" parent="."]
+[node name="DronePath08" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
 
 [node name="Marker2D" type="Marker2D" parent="DronePath08"]
-position = Vector2(779, -484)
+position = Vector2(415, -182)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath08"]
-position = Vector2(710, -430)
+position = Vector2(410, -280)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath08"]
-position = Vector2(714, -336)
+position = Vector2(314, -90)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath08"]
-position = Vector2(783, -285)
+position = Vector2(437, -63)
 
-[node name="Marker2D5" type="Marker2D" parent="DronePath08"]
-position = Vector2(838, -334)
+[node name="Drone9" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(737, 293)
+waypoints_path = NodePath("../DronePath09")
 
-[node name="Marker2D6" type="Marker2D" parent="DronePath08"]
-position = Vector2(844, -430)
+[node name="DronePath09" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
+
+[node name="Marker2D" type="Marker2D" parent="DronePath09"]
+position = Vector2(666, -261)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath09"]
+position = Vector2(755, -34)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath09"]
+position = Vector2(731, -137)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath09"]
+position = Vector2(625, -47)
+
+[node name="Drone10" parent="." groups=["drone"] instance=ExtResource("2_yqjtg")]
+position = Vector2(471, -151)
+waypoints_path = NodePath("../DronePath10")
+
+[node name="DronePath10" type="Node2D" parent="." groups=["drone"]]
+position = Vector2(72, -23)
+
+[node name="Marker2D" type="Marker2D" parent="DronePath10"]
+position = Vector2(674, 361)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath10"]
+position = Vector2(655, 209)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath10"]
+position = Vector2(679, 450)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath10"]
+position = Vector2(636, 144)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(25, 122)
 physics_material_override = SubResource("PhysicsMaterial_uwrxv")
 
 [node name="Bottom_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 128)
+position = Vector2(12, 1)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="Top_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -234,19 +257,9 @@ position = Vector2(0, -65)
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
 
 [node name="Right_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(683, 249)
+position = Vector2(-259, -149)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="Left_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-32, -3)
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
-
-[node name="Tile" type="Sprite2D" parent="."]
-visible = false
-z_index = -2
-position = Vector2(-2.10686, -9.12502)
-scale = Vector2(13.512, 23.7446)
-texture = ExtResource("4_lbhrr")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Tile"]
-color = Color(0.0885599, 0.0885599, 0.0885599, 1)
-blend_mode = 1

@@ -8,9 +8,9 @@ var current_waypoint_index: int = 0
 
 # --- Chase & Vision Settings ---
 @export var chase_speed: float = 90.0
-@export var vision_range: float = 135.0
+@export var vision_range: float = 90.0
 @export var vision_angle: float = 90.0 # Field of view in degrees
-@export var chase_time_after_lost: float = 3.0 # 3 second chase cooldown
+@export var chase_time_after_lost: float = 4.0 # 3 second chase cooldown
 var target_player: Node2D = null
 var last_seen_position: Vector2
 
