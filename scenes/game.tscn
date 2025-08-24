@@ -1,90 +1,226 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7f4xic2gllqx"]
+[gd_scene load_steps=9 format=3 uid="uid://b7f4xic2gllqx"]
 
 [ext_resource type="PackedScene" uid="uid://ddwy75v7sns62" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dq8rtahq7mc5w" path="res://scenes/Drone.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://b46wdwe4124mr" path="res://scenes/node_2d.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://5cr5erqeyeqp" path="res://assets/sample_assets/sprites/tile.png" id="4_lbhrr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwrxv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
-distance = -194.0
+distance = -411.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 normal = Vector2(0, 1)
-distance = -255.0
+distance = -475.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
-distance = -456.0
+distance = -843.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 normal = Vector2(1, 0)
-distance = -571.0
+distance = -957.0
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-133, 82)
+position = Vector2(-798, 370)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Drone" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(176, 79)
+position = Vector2(743, 328)
 collision_layer = 2
 waypoints_path = NodePath("../DronePath01")
 
 [node name="DronePath01" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="DronePath01"]
-position = Vector2(178, 49)
+position = Vector2(745, 298)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath01"]
-position = Vector2(80, 54)
+position = Vector2(647, 303)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath01"]
-position = Vector2(170, -67)
+position = Vector2(737, 182)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath01"]
-position = Vector2(114, -108)
+position = Vector2(681, 141)
 
 [node name="Marker2D5" type="Marker2D" parent="DronePath01"]
-position = Vector2(77, -62)
+position = Vector2(644, 187)
 
 [node name="Marker2D6" type="Marker2D" parent="DronePath01"]
-position = Vector2(134, 110)
+position = Vector2(701, 359)
 
 [node name="Drone2" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-117, -70)
+position = Vector2(-808, -439)
 collision_layer = 2
 waypoints_path = NodePath("../DronePath02")
 
 [node name="DronePath02" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="DronePath02"]
-position = Vector2(-114, -99)
+position = Vector2(-779, -400)
 
 [node name="Marker2D2" type="Marker2D" parent="DronePath02"]
-position = Vector2(-183, -45)
+position = Vector2(-708, -289)
 
 [node name="Marker2D3" type="Marker2D" parent="DronePath02"]
-position = Vector2(-179, 49)
+position = Vector2(-613, -283)
 
 [node name="Marker2D4" type="Marker2D" parent="DronePath02"]
-position = Vector2(-110, 100)
+position = Vector2(-852, -232)
 
 [node name="Marker2D5" type="Marker2D" parent="DronePath02"]
-position = Vector2(-55, 51)
+position = Vector2(-560, -356)
 
 [node name="Marker2D6" type="Marker2D" parent="DronePath02"]
-position = Vector2(-49, -45)
+position = Vector2(-643, -432)
 
-[node name="CCTV" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(10, -107)
+[node name="Drone3" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(350, -133)
+waypoints_path = NodePath("../DronePath03")
 
-[node name="CCTV2" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(11, 115)
-rotation = 3.2306
+[node name="DronePath03" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath03"]
+position = Vector2(-614, 204)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath03"]
+position = Vector2(-703, 304)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath03"]
+position = Vector2(-767, 113)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath03"]
+position = Vector2(-519, 61)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath03"]
+position = Vector2(-467, 246)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath03"]
+position = Vector2(-546, 378)
+
+[node name="Drone4" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-288, -43)
+waypoints_path = NodePath("../DronePath04")
+
+[node name="DronePath04" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath04"]
+position = Vector2(-294, -147)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath04"]
+position = Vector2(-363, -93)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath04"]
+position = Vector2(-359, 1)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath04"]
+position = Vector2(-290, 52)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath04"]
+position = Vector2(-235, 3)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath04"]
+position = Vector2(-229, -93)
+
+[node name="Drone5" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(239, -419)
+waypoints_path = NodePath("../DronePath05")
+
+[node name="DronePath05" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath05"]
+position = Vector2(165, -352)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath05"]
+position = Vector2(-69, -415)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath05"]
+position = Vector2(98, -258)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath05"]
+position = Vector2(-50, -287)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath05"]
+position = Vector2(-238, -454)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath05"]
+position = Vector2(88, -495)
+
+[node name="Drone6" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(151, 274)
+waypoints_path = NodePath("../DronePath06")
+
+[node name="DronePath06" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath06"]
+position = Vector2(108, 207)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath06"]
+position = Vector2(39, 261)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath06"]
+position = Vector2(43, 355)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath06"]
+position = Vector2(112, 406)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath06"]
+position = Vector2(167, 357)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath06"]
+position = Vector2(173, 261)
+
+[node name="Drone7" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(750, -339)
+waypoints_path = NodePath("../DronePath07")
+
+[node name="DronePath07" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath07"]
+position = Vector2(408, -147)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath07"]
+position = Vector2(339, -93)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath07"]
+position = Vector2(343, 1)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath07"]
+position = Vector2(412, 52)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath07"]
+position = Vector2(467, 3)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath07"]
+position = Vector2(473, -93)
+
+[node name="Drone8" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-711, 157)
+waypoints_path = NodePath("../DronePath08")
+
+[node name="DronePath08" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="DronePath08"]
+position = Vector2(779, -484)
+
+[node name="Marker2D2" type="Marker2D" parent="DronePath08"]
+position = Vector2(710, -430)
+
+[node name="Marker2D3" type="Marker2D" parent="DronePath08"]
+position = Vector2(714, -336)
+
+[node name="Marker2D4" type="Marker2D" parent="DronePath08"]
+position = Vector2(783, -285)
+
+[node name="Marker2D5" type="Marker2D" parent="DronePath08"]
+position = Vector2(838, -334)
+
+[node name="Marker2D6" type="Marker2D" parent="DronePath08"]
+position = Vector2(844, -430)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_uwrxv")
@@ -98,16 +234,17 @@ position = Vector2(0, -65)
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
 
 [node name="Right_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(116, 0)
+position = Vector2(683, 249)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="Left_CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
 [node name="Tile" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
-position = Vector2(-0.21344, 0.750031)
-scale = Vector2(8.28271, 14.75)
+position = Vector2(-2.10686, -9.12502)
+scale = Vector2(13.512, 23.7446)
 texture = ExtResource("4_lbhrr")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Tile"]
