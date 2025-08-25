@@ -1,2 +1,1 @@
-Bot Breach
-https://via.placeholder.com/800x200/2D2D2D/FFFFFF?text=Bot+Breach+-+2D+Stealth+%2526+Strategy (Note: Replace with an actual banner image)
+![Application Screenshot]([https://github.com/Akila-Jayasinghe/Personal-Finance-Manager/blob/main/Interfaces%20-%20JPEG/0714(3)-Cover.jpg](https://github.com/Akila-Jayasinghe/Bot-Breach-v01/blob/main/banner.png))
