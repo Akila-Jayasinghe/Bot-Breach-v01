@@ -1,1 +1,1 @@
-![Application Screenshot]([https://github.com/Akila-Jayasinghe/Personal-Finance-Manager/blob/main/Interfaces%20-%20JPEG/0714(3)-Cover.jpg](https://github.com/Akila-Jayasinghe/Bot-Breach-v01/blob/main/banner.png))
+![Application Screenshot](https://github.com/Akila-Jayasinghe/Bot-Breach-v01/blob/781144bf4522264c12396c24ad65ee3b1b474f20/banner.png)
