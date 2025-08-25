@@ -54,15 +54,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3v2ag"]
-radius = 18.0
-height = 44.0
+radius = 11.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 5
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.844203, 0.844203)
+scale = Vector2(0.521739, 0.521739)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle"
 autoplay = "idle"

@@ -7,7 +7,7 @@ var waypoints: Array[Vector2] = []
 var current_waypoint_index: int = 0
 
 # --- Chase & Vision Settings ---
-@export var chase_speed: float = 90.0
+@export var chase_speed: float = 80.0
 @export var vision_range: float = 90.0
 @export var vision_angle: float = 90.0 # Field of view in degrees
 @export var chase_time_after_lost: float = 4.0 # 3 second chase cooldown

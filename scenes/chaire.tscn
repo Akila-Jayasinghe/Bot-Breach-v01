@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf5oqxi5fcfck"]
+
+[ext_resource type="Texture2D" uid="uid://biaopyptrlet6" path="res://assets/Assests basic/office items/office chair top view.png" id="1_nbocx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtwqb"]
+size = Vector2(54, 52)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nbocx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_jtwqb")

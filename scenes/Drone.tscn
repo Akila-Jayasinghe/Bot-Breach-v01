@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq8rtahq7mc5w"]
+[gd_scene load_steps=16 format=3 uid="uid://dq8rtahq7mc5w"]
 
 [ext_resource type="Texture2D" uid="uid://dnx4pg0scqvve" path="res://assets/sample_assets/sprites/slime_green.png" id="1_knnud"]
 [ext_resource type="Script" uid="uid://cok5i00ahcay0" path="res://scenes/drone.gd" id="1_x33g3"]
 [ext_resource type="Texture2D" uid="uid://fms05q7cvyxi" path="res://assets/sample_assets/sprites/slime_purple.png" id="2_1r4ts"]
 [ext_resource type="Texture2D" uid="uid://bn5nlmckh7wma" path="res://assets/Assests basic/enemy bot frame 1.png" id="4_rledj"]
+[ext_resource type="Script" uid="uid://cdq2jcg66vt57" path="res://scenes/bump_detector.gd" id="5_3fqrr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
 atlas = ExtResource("1_knnud")
@@ -61,13 +62,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rledj"]
-radius = 29.5042
+radius = 18.5068
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x33g3"]
 radius = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fqrr"]
-radius = 45.5556
+radius = 19.6023
 
 [node name="Drone" type="CharacterBody2D"]
 collision_mask = 6
@@ -75,13 +76,13 @@ script = ExtResource("1_x33g3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4.76837e-07)
-scale = Vector2(1.59375, 1.59375)
+scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_hxsdg")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 6.5)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_rledj")
 
 [node name="Vision" type="Area2D" parent="."]
@@ -89,7 +90,7 @@ collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-1, 7)
+position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_x33g3")
 
 [node name="VisionConeVisual" type="Node2D" parent="."]
@@ -98,7 +99,10 @@ visibility_layer = 5
 [node name="ChaseTimer" type="Timer" parent="."]
 
 [node name="BumpDetector" type="Area2D" parent="."]
+script = ExtResource("5_3fqrr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BumpDetector"]
-position = Vector2(0.5, 6.75)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3fqrr")
+
+[node name="Timer" type="Timer" parent="BumpDetector"]

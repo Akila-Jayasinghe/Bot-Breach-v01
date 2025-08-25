@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cractqjmv0fp1"]
+
+[ext_resource type="Texture2D" uid="uid://bqdrxus5qyeov" path="res://assets/Assests basic/digital key/have to hack protected digital key.png" id="1_yk2u2"]
+[ext_resource type="Script" uid="uid://7lm62s64mmn2" path="res://scenes/key.gd" id="2_fttkb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fttkb"]
+radius = 45.0999
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_yk2u2")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_fttkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fttkb")

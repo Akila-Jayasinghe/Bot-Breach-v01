@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1pn2moi4yps5"]
+
+[ext_resource type="Texture2D" uid="uid://djntoh1qvnggr" path="res://assets/Assests basic/office items/plant top view.png" id="1_xu6wc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xu6wc"]
+radius = 19.0
+height = 54.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.609375, 0.609375)
+texture = ExtResource("1_xu6wc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xu6wc")
