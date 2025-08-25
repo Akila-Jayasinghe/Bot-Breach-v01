@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddwy75v7sns62"]
+[gd_scene load_steps=13 format=3 uid="uid://ddwy75v7sns62"]
 
 [ext_resource type="Script" uid="uid://c3sbbf37eu0jj" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b2san1fil5nhd" path="res://assets/Assests basic/robot/robot frame 1.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://doesfhkjobfp6" path="res://assets/Assests basic/robot/robot moving frame 1.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://bb4rjvamimu2u" path="res://assets/Assests basic/robot/robot-Moving-Forward--Frame-.png" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://br24iimsl2pdp" path="res://assets/sounds/power_up.wav" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("2_dqkch")
@@ -69,3 +70,6 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_3v2ag")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
