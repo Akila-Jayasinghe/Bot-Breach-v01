@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- Patrol Settings ---
-@export var patrol_speed: float = 45.0
+@export var patrol_speed: float = 60.0
 @export var waypoints_path: NodePath
 var waypoints: Array[Vector2] = []
 var current_waypoint_index: int = 0
