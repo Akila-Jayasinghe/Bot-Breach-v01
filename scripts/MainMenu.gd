@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var exit_button = $TextureRect/MarginContainer/VBoxContainer/Button2
 
 func _ready():
-	print("You are in the main menu")
+	#print("You are in the main menu")
 	# Connect button signals
 	start_button.pressed.connect(_on_start_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
@@ -13,12 +13,12 @@ func _ready():
 	start_button.grab_focus()
 
 func _on_start_button_pressed():
-	print("Starting game...")
+	#print("Starting game...")
 	# Load your main game scene - change the path to your actual game scene
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_exit_button_pressed():
-	print("Exiting game...")
+	#print("Exiting game...")
 	get_tree().quit()
 
 # Optional: Add keyboard navigation

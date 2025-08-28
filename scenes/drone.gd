@@ -50,7 +50,7 @@ func _physics_process(delta):
 	if current_state == State.STUNNED && target_player:
 		# Check if player has moved from their last recorded position
 		if target_player.global_position.distance_to(player_last_position) > 2.0:
-			print("Player moved! Resuming chase from stun.")
+			#print("Player moved! Resuming chase from stun.")
 			current_state = State.CHASE
 		
 		# Keep facing the player while stunned
@@ -122,7 +122,7 @@ func suspicious(_delta):
 
 func _on_bump_detector_body_entered(body):
 	if (current_state == State.CHASE || current_state == State.SUSPICIOUS) && body.is_in_group("player"):
-		print("Drone bumped into player! Permanently stunned until player moves.")
+		#print("Drone bumped into player! Permanently stunned until player moves.")
 		current_state = State.STUNNED
 		velocity = Vector2.ZERO
 		# Record the player's position at the moment of stun
@@ -131,18 +131,18 @@ func _on_bump_detector_body_entered(body):
 # --- VISION SIGNAL HANDLERS ---
 func _on_vision_body_entered(body):
 	# DEBUG: Print ANY body that enters the vision area
-	print("Vision detected something: ", body.name)
+	#print("Vision detected something: ", body.name)
 	
 	if body.is_in_group("player"):
-		print("DRONE ALERT: Player entered vision!")
+		#print("DRONE ALERT: Player entered vision!")
 		target_player = body
 		# Allow vision detection to work even when stunned
-		if current_state == State.STUNNED:
-			print("Drone recovered from stun! Resuming chase.")
+		#if current_state == State.STUNNED:
+			#print("Drone recovered from stun! Resuming chase.")
 		current_state = State.CHASE
 		chase_timer.stop()
-	else:
-		print("It was not the player. It was in groups: ", body.get_groups())
+	#else:
+		#print("It was not the player. It was in groups: ", body.get_groups())
 
 func _on_vision_body_exited(body):
 	if body == target_player:
@@ -150,11 +150,11 @@ func _on_vision_body_exited(body):
 		if current_state != State.STUNNED:
 			chase_timer.start()
 			current_state = State.SUSPICIOUS # Switch to suspicious state
-		else:
-			print("Player escaped while drone was stunned.")
+		#else:
+			#print("Player escaped while drone was stunned.")
 
 func _on_chase_timer_timeout():
 	# This runs after 3 seconds if the player hasn't been re-spotted
-	print("Drone gave up the chase.")
+	#print("Drone gave up the chase.")
 	target_player = null
 	current_state = State.PATROL # Return to patrol

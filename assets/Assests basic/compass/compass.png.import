@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dswcquapsw7x2"
-path="res://.godot/imported/coin.png-f8b0b99029d070d4471c895ea5b0941d.ctex"
+uid="uid://x4v7vpqd2tj1"
+path="res://.godot/imported/compass.png-d53db03640a8034c38b563a5859a7626.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sample_assets/sprites/coin.png"
-dest_files=["res://.godot/imported/coin.png-f8b0b99029d070d4471c895ea5b0941d.ctex"]
+source_file="res://assets/Assests basic/compass/compass.png"
+dest_files=["res://.godot/imported/compass.png-d53db03640a8034c38b563a5859a7626.ctex"]
 
 [params]
 

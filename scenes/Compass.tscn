@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://nyli7li2m61i"]
+
+[ext_resource type="Texture2D" uid="uid://x4v7vpqd2tj1" path="res://assets/Assests basic/compass/compass.png" id="1_8niju"]
+[ext_resource type="Script" uid="uid://bvksf8nm0854c" path="res://scripts/compass.gd" id="2_e8iv4"]
+
+[node name="compass" type="Sprite2D"]
+position = Vector2(1, -1)
+scale = Vector2(0.00981997, 0.00981996)
+texture = ExtResource("1_8niju")
+script = ExtResource("2_e8iv4")

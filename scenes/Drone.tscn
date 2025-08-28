@@ -1,31 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dq8rtahq7mc5w"]
+[gd_scene load_steps=10 format=3 uid="uid://dq8rtahq7mc5w"]
 
-[ext_resource type="Texture2D" uid="uid://dnx4pg0scqvve" path="res://assets/sample_assets/sprites/slime_green.png" id="1_knnud"]
 [ext_resource type="Script" uid="uid://cok5i00ahcay0" path="res://scenes/drone.gd" id="1_x33g3"]
-[ext_resource type="Texture2D" uid="uid://fms05q7cvyxi" path="res://assets/sample_assets/sprites/slime_purple.png" id="2_1r4ts"]
 [ext_resource type="Texture2D" uid="uid://bn5nlmckh7wma" path="res://assets/Assests basic/enemy bot frame 1.png" id="4_rledj"]
 [ext_resource type="Script" uid="uid://cdq2jcg66vt57" path="res://scenes/bump_detector.gd" id="5_3fqrr"]
 [ext_resource type="AudioStream" uid="uid://tthn0dy1n3k2" path="res://assets/sounds/explosion.wav" id="6_p2k0n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
-atlas = ExtResource("1_knnud")
-region = Rect2(48, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1p8w"]
-atlas = ExtResource("1_knnud")
-region = Rect2(72, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6asb"]
-atlas = ExtResource("2_1r4ts")
-region = Rect2(48, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxcwj"]
-atlas = ExtResource("2_1r4ts")
-region = Rect2(72, 54, 24, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4gt0"]
-atlas = ExtResource("1_knnud")
-region = Rect2(48, 54, 24, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fqrr"]
 atlas = ExtResource("4_rledj")
@@ -33,26 +11,6 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hxsdg"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_umx5g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k1p8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6asb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nxcwj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t4gt0")
-}],
-"loop": true,
-"name": &"hit",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3fqrr")
@@ -106,6 +64,7 @@ position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_3fqrr")
 
 [node name="Timer" type="Timer" parent="BumpDetector"]
+autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_p2k0n")

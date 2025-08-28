@@ -12,12 +12,12 @@ func _ready():
 	start_button.grab_focus()
 
 func _on_start_button_pressed():
-	print("Starting game...")
+	#print("Starting game...")
 	# Load your main game scene - change the path to your actual game scene
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_exit_button_pressed():
-	print("Exiting game...")
+	#print("Exiting game...")
 	get_tree().quit()
 
 # Optional: Add keyboard navigation
